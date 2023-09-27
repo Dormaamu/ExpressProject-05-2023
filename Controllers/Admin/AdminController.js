@@ -12,6 +12,7 @@ class AdminController {
 
         }
     }
+    
     static updatestatus = async (req, res) => {
         try {
             const update = await CourseModel.findByIdAndUpdate(req.params.id,{

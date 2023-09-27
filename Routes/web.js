@@ -30,7 +30,7 @@ router.post('/updateprofile', checkuserauth, FrontendController.updateprofile)
 //Course Controller
 
 router.post('/courseinsert', checkuserauth, CourseController.courseInsert)
-router.get('/coursedisplay', checkuserauth, CourseController.coursedisplay)
+router.get('/course/display', checkuserauth, CourseController.coursedisplay)
 router.get('/courseview/:id', checkuserauth, CourseController.courseview)
 router.get('/courseedit/:id', checkuserauth, CourseController.courseedit)
 router.post('/courseupdate/:id', checkuserauth, CourseController.courseupdate)

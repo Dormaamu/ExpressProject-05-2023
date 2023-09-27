@@ -28,7 +28,7 @@ class FrontendController {
         }
     }
 
-    static dashboard = async (req, res) => { 
+    static dashboard = async (req, res) => {
         try {
             const { name, image, _id } = req.data1
             const btech = await CourseModel.findOne({ user_id: _id, course: 'B.Tech' })
@@ -112,18 +112,18 @@ class FrontendController {
                 const user = await UserModel.findOne({ email: email })
                 if (user != null) {
                     const isMatched = await bcrypt.compare(password, user.password)//
-                    //console.log(req.body)
+                    // console.log(isMatched)
                     if (isMatched) {
                         if (user.role == 'student') {
                             const token = jwt.sign({ ID: user._id }, 'Baba@success1511130311090810');
                             //console.log(token)
-                            res.cookie('token',token)
-                            res.redirect('/dashboard')      
+                            res.cookie('token', token)
+                            res.redirect('/dashboard')
                         }
                         if (user.role == 'admin') {
                             const token = jwt.sign({ ID: user._id }, 'Baba@success1511130311090810');
                             //console.log(token)
-                            res.cookie('token',token)
+                            res.cookie('token', token)
                             res.redirect('/admin/dashboard')
                         }
 
@@ -147,7 +147,7 @@ class FrontendController {
     static logout = async (req, res) => {
         try {
             res.clearCookie('token')
-            res.redirect('logout')
+            res.redirect('/')
         } catch (error) {
             console.log(error)
         }
