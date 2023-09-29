@@ -1,20 +1,78 @@
-<%- include('../Header.ejs')%>
+<%- include('../header.ejs') %>
+    <br><br><br><br><br>
+    <style>
+        .buttonA {
+            background-color: white;
+            color: black;
+            border: 2px solid #4caf50;
+        }
 
+        .buttonA:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .buttonV {
+            background-color: white;
+            color: black;
+            border: 2px solid #165fc5;
+        }
+
+        .buttonV:hover {
+            background-color: #165fc5;
+            color: white;
+        }
+    </style>
     <div class="container mt-5">
-        <table class="table table-bordered">
-            <tr>
-                <th>id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>course</th>
-            </tr>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>status</th>
+                        <th>comment</th>
+                        <th></th>
+                        <th>action</th>
+                    </tr>
+                    <% i=1 %>
+                        <% d.forEach((c)=>{ %>
+                            <tr>
+                                <td>
+                                    <%=c._id %>
+                                </td>
+                                <td>
+                                    <%= c.name %>
+                                </td>
+                                <td>
+                                    <%= c.email %>
+                                </td>
+                                <td>
+                                    <%= c.status %>
+                                </td>
+                                <td>
+                                    <form action="/updatestatus/<%= c._id %>" method="post">
+                                        <textarea name="comment" id=""></textarea>
+                                </td>
+                                <td>
+                                    <button type="submit" name="status" class="buttonA"
+                                        value="Approved">Approved</button>
+                                    <button type="submit" name="status" class="btn btn-danger"
+                                        value="Reject">Reject</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <a href="/courseview/<%= c._id %>" class="btn buttonV" >view</a>
+                                    <a href="/coursedelete/<%= c._id %>" class="btn btn-danger">delete</a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                </table>
+            </div>
+        </div>
+    </div>
 
-            <tr>
-                <td><%= d._id %></td>
-                <td><%= d.name %></td>
-                <td><%= d.email %></td>
-                <td><%= d.course %></td>
-            </tr>
-
-
-            <%- include('../Footer.ejs')%>
+    <br>
+    <br>
+    <br>
+    <%- include('../footer.ejs') %>

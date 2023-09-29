@@ -37,7 +37,7 @@ router.post('/courseupdate/:id', checkuserauth, CourseController.courseupdate)
 router.get('/coursedelete/:id', checkuserauth, CourseController.coursedelete)
 
 //Admin Controller
-router.get('/admin/Dashboard', checkuserauth, AdminController.dashboard)
+router.get('/admin/dashboard', checkuserauth, AdminController.dashboard)
 router.post('/updatestatus/:id', checkuserauth, AdminController.updatestatus)
 
 
